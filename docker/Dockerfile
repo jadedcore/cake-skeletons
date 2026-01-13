@@ -1,5 +1,5 @@
 FROM composer:1.9.3 as vendor
-FROM php:apache
+FROM php:8.4-apache
 
 LABEL org.opencontainers.image.source https://github.com/jadedcore/cake4-skeleton
 
@@ -52,6 +52,7 @@ Run a2enmod rewrite
 # Create virtual host
 COPY docker/000-default.conf /etc/apache2/sites-available/00-default.conf
 COPY docker/apache2.conf /etc/apache2/apache2.conf
+RUN a2ensite 00-default
 
 # Start Apache
 CMD ["/usr/sbin/apache2","-D","FOREGROUND"]

@@ -26,7 +26,7 @@ if [ -d $directory_name ]; then
 fi
 
 composer self-update;
-composer create-project --prefer-dist cakephp/app:4.* $directory_name;
+composer create-project --prefer-dist cakephp/app:5.* $directory_name;
 cp ./docker/.env.example ./docker/.env
 ./toolkit.sh compose up -d
 ./toolkit.sh generate_keys

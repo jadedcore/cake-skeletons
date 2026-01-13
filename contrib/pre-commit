@@ -9,7 +9,7 @@
 echo "Running pre-commit hook."
 phpfiles=$(git diff --cached --name-only --diff-filter=ACM $against | grep '\.php$')
 cd $(dirname $0) && cd ../../
-[[ $("docker compose" -f docker/docker-compose.yml ps | grep app | wc -l) == *"0" ]] &&
+[[ $(docker-compose -f docker/docker-compose.yml ps | grep app | wc -l) == *"0" ]] &&
 echo "App must be running...Aborted" && exit 1
 cd $(dirname $0)/../../
 
