@@ -3,7 +3,7 @@
 
 cd $(dirname $0)
 
-DOCKER_COMPOSE_EXEC=docker-compose
+DOCKER_COMPOSE_EXEC="docker compose"
 DOCKER_COMPOSE_LOCATION=docker/docker-compose.yml
 DOCKER_COMPOSE_COMMAND="$DOCKER_COMPOSE_EXEC -f $DOCKER_COMPOSE_LOCATION"
 
