@@ -25,9 +25,18 @@ if [ -d $directory_name ]; then
 	fi
 fi
 
+echo "Creating CakePHP Project...";
 composer self-update;
 composer create-project --prefer-dist cakephp/app:5.* $directory_name;
-cp ./docker/.env.example ./docker/.env
+
+echo "Installing custom project configurations...";
+cp -f ./contrib/phpcs.xml "./$directory_name/phpcs.xml";
+cp -f ./contrib/AGENTS.md "./$directory_name/AGENTS.md";
+
+echo "Installing docker .env...";
+cp ./docker/.env.example ./docker/.env;
+
+echo "Starting container..."
 ./toolkit.sh compose up -d
 ./toolkit.sh generate_keys
 ./toolkit.sh open

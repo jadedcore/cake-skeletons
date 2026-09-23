@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ruleset name="App">
+	<rule ref="CakePHP">
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
+		<exclude name="PSR2.Classes.ClassDeclaration"/>
+		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration"/>
+	</rule>
+	<!-- Foundation follows the tab and same-line brace style in its AGENTS.md. -->
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="tabIndent" type="boolean" value="true"/>
+			<property name="exact" type="boolean" value="false"/>
+		</properties>
+		<include-pattern>*/plugins/Foundation/*</include-pattern>
+	</rule>
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent">
+		<include-pattern>*/plugins/Foundation/*</include-pattern>
+	</rule>
+	<rule ref="Generic.Classes.OpeningBraceSameLine">
+		<include-pattern>*/plugins/Foundation/*</include-pattern>
+	</rule>
+	<rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie">
+		<include-pattern>*/plugins/Foundation/*</include-pattern>
+	</rule>
+	<rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint">
+		<exclude-pattern>*/src/Controller/*</exclude-pattern>
+	</rule>
+
+	<file>src/</file>
+	<file>tests/</file>
+	<file>plugins/Foundation/src/</file>
+	<file>plugins/Foundation/config/</file>
+	<file>plugins/Foundation/tests/</file>
+</ruleset>
