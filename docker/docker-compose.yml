@@ -9,7 +9,7 @@ services:
       - "${APACHE_UNSECURE_PORT}:80"
     volumes:
       - ../app:/var/www/html
-      - /var/www/html/vendor
+      - vendor_data:/var/www/html/vendor
       - ./logs:/var/log/app
   mariadb:
     image: mariadb:10.6
@@ -22,3 +22,5 @@ services:
 volumes:
   sans_data:
     name: ${COMPOSE_PROJECT_NAME}_data
+  vendor_data:
+    name: ${COMPOSE_PROJECT_NAME}_vendor
