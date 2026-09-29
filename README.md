@@ -14,7 +14,6 @@ The development environment includes:
 * PHP 8.4+
 * Apache
 * MariaDB
-* MailHog
 * Docker / Docker Compose
 * Composer
 * PHPUnit
@@ -99,7 +98,6 @@ The stack includes:
 
 * Apache/PHP application container
 * MariaDB
-* MailHog
 
 Environment-specific configuration is maintained separately from application source code.
 
@@ -113,7 +111,7 @@ The installer normally handles the required development setup.
 
 ## Development Toolkit
 
-`toolkit.sh` provides convenience commands for interacting with the Dockerized CakePHP environment.
+`toolkit` provides convenience commands for interacting with the Dockerized CakePHP environment.
 
 The toolkit is intended to provide a consistent interface for common development operations such as:
 
@@ -127,7 +125,7 @@ The toolkit is intended to provide a consistent interface for common development
 Run:
 
 ```bash
-./toolkit.sh
+./toolkit
 ```
 
 to view the currently supported commands.
@@ -149,9 +147,10 @@ composer test
 cake-skeletons/
 ├── contrib/            Files applied to generated applications
 ├── docker/             Docker configuration and environment
+├── tests/              Unit Tests
+├── toolkit-commands    Toolkit classes and individual toolkit commands
 ├── install.sh          Project bootstrap/install script
-├── toolkit.sh          Development command wrapper
-├── random.salt.sh      Security salt generation utility
+├── toolkit             Development command wrapper
 └── README.md
 ```
 
@@ -193,11 +192,9 @@ The skeleton is still evolving.
 
 Current areas for improvement include:
 
-* Remove assumptions that the generated application directory is named `app`.
 * Provide a standard `app_local.php` configuration that consumes the Docker environment variables.
-* Continue generalizing `toolkit.sh` so that it contains only functionality appropriate for any generated CakePHP project.
+* Continue generalizing `toolkit` so that it contains only functionality appropriate for any generated CakePHP project.
 * Standardize project verification commands for PHPUnit and PHPCS.
-* Improve installer validation and error handling.
 * Make installation of reusable standard plugins configurable.
 
 ## Relationship to Foundation
