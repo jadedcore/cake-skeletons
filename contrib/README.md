@@ -11,10 +11,11 @@ Brief description of the project.
 
 ### Installation
 
-Clone the repository and run the installer:
+The project was generated from the CakePHP skeleton repository and initialized with Git. Start the development environment with:
 
 ```bash
-./install.sh
+./toolkit compose up -d
+./toolkit open
 ```
 
 ### Development Environment
@@ -73,7 +74,7 @@ Local Docker configuration is stored in:
 docker/.env
 ```
 
-Use `docker/example.env` as the template when creating a new environment.
+Use `docker/.env.example` as the template when creating a new environment.
 
 ## Development
 

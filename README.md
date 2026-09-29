@@ -39,7 +39,7 @@ Run the installer:
 ./install.sh
 ```
 
-The installer creates the CakePHP application and prepares the Docker development environment.
+The installer asks for a project name and creates a sibling directory with that name. It copies in the development tooling, creates the CakePHP application in the project's `app/` directory, and initializes Git for the entire project. The skeleton checkout is left unchanged.
 
 ## How It Works
 
