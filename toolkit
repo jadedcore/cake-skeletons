@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/toolkit-commands/core/CommandRegistry.php';
+
+use Toolkit\Core\CommandRegistry;
+
+$registry = new CommandRegistry();
+$registry->execute(args: $argv);
