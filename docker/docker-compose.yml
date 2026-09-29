@@ -1,6 +1,6 @@
 services:
   app:
-    restart: always
+    restart: "no"
     build:
       context: ../
       dockerfile: docker/Dockerfile
@@ -10,15 +10,15 @@ services:
     volumes:
       - ../app:/var/www/html
       - /var/www/html/vendor
-      - ./logs:/var/log/sans-log
+      - ./logs:/var/log/app
   mariadb:
     image: mariadb:10.6
-    restart: on-failure
+    restart: "no"
     env_file: .env
     ports:
-      - "${MARIADB_PORT}:3306"
+      - "${MARIADB_HOST_PORT}:3306"
     volumes:
-      - 'sans_data:/var/lib/mysql'
+      - sans_data:/var/lib/mysql
 volumes:
   sans_data:
-    external: false
+    name: ${COMPOSE_PROJECT_NAME}_data

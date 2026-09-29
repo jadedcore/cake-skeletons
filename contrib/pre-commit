@@ -13,15 +13,14 @@ cd $(dirname $0) && cd ../../
 echo "App must be running...Aborted" && exit 1
 cd $(dirname $0)/../../
 
-
 if [ "$phpfiles" ]; then
 	filelist=''
 	for file in $phpfiles; do
 		file=$(echo $file | sed 's/.*app\///')
 		filelist="$filelist $file"
-		./toolkit.sh compose exec -T "php -l -d display_errors=0 $file"
+		./toolkit compose exec -T "php -l -d display_errors=0 $file"
 		[[ $? != 0 ]] && exit 1
 	done
-	./toolkit.sh phpcs $filelist
+	./toolkit phpcs $filelist
 	[[ $? != 0 ]] && exit 1 || echo "Coding Standards Passed!"
 fi
