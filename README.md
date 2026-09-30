@@ -6,18 +6,28 @@ The goal of this repository is simple: eliminate the repetitive setup required e
 
 The installer creates a clean CakePHP application, applies standard project configuration and coding conventions, and provides a Docker-based local development environment.
 
+## Requirements
+
+The following must already be installed on the host system:
+
+* Docker Desktop
+* Git
+
 ## What's Included
 
-The development environment includes:
+The generated development environment provides:
 
 * CakePHP 5
 * PHP 8.4+
 * Apache
 * MariaDB
-* Docker / Docker Compose
 * Composer
 * PHPUnit
-* PHP_CodeSniffer
+* CakePHP CodeSniffer
+* Custom PHP_Codesniffer configuration
+* Docker Compose configuration
+* Development toolkit
+* AI agent development instructions
 
 The skeleton also applies custom project defaults from the `contrib/` directory after CakePHP creates the application.
 
