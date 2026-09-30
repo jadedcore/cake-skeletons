@@ -225,7 +225,7 @@ The long-term goal is for `cake-skeletons` to be capable of creating a new CakeP
 
 This project is licensed under the BSD 3-Clause License.
 
-Copyright © 2026, 2DN Ventures, LLC.
+Copyright © 2026, Chris Valliere
 
 See the [License](License) file for deatails.
 
