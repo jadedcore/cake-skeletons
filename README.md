@@ -63,7 +63,7 @@ CakePHP Application Skeleton
     composer create-project
             │
             ▼
- Apply JadedCore Configuration
+ Apply Your Configuration
             │
             ▼
  Configure Docker Environment
