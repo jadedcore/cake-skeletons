@@ -43,9 +43,43 @@ printf "${GREEN}Creating CakePHP application...${NC}\n"
 composer create-project --prefer-dist 'cakephp/app:5.*' "$PROJECT_DIR/app"
 
 printf "${GREEN}Applying project configuration...${NC}\n"
+
 cp "$SCRIPT_DIR/contrib/phpcs.xml" "$PROJECT_DIR/phpcs.xml"
 cp "$SCRIPT_DIR/contrib/AGENTS.md" "$PROJECT_DIR/AGENTS.md"
 cp "$SCRIPT_DIR/contrib/README.md" "$PROJECT_DIR/README.md"
+
+# Copy the standard application configuration.
+cp "$SCRIPT_DIR/contrib/app_local.example.php" \
+	"$PROJECT_DIR/app/config/app_local.example.php"
+
+cp "$SCRIPT_DIR/contrib/app_local.example.php" \
+	"$PROJECT_DIR/app/config/app_local.php"
+
+# Generate a unique security salt for this application.
+security_salt="$(php -r 'echo bin2hex(random_bytes(32));')"
+
+APP_LOCAL_PATH="$PROJECT_DIR/app/config/app_local.php" \
+SECURITY_SALT="$security_salt" \
+php -r '
+	$path = getenv("APP_LOCAL_PATH");
+	$salt = getenv("SECURITY_SALT");
+	$config = file_get_contents($path);
+
+	if (substr_count($config, "__SECURITY_SALT__") !== 1) {
+		fwrite(STDERR, "Expected exactly one security salt placeholder.\n");
+		exit(1);
+	}
+
+	$config = str_replace("__SECURITY_SALT__", $salt, $config);
+
+	if (file_put_contents($path, $config) === false) {
+		fwrite(STDERR, "Unable to write app_local.php.\n");
+		exit(1);
+	}
+'
+
+chmod 600 "$PROJECT_DIR/app/config/app_local.php"
+
 cp "$PROJECT_DIR/docker/.env.example" "$PROJECT_DIR/docker/.env"
 
 sed -i.bak "s/^COMPOSE_PROJECT_NAME=.*/COMPOSE_PROJECT_NAME=$project_name/" "$PROJECT_DIR/docker/.env"
