@@ -19,6 +19,12 @@ services:
       - "${MARIADB_HOST_PORT}:3306"
     volumes:
       - sans_data:/var/lib/mysql
+  mailpit:
+    image: axllent/mailpit:latest
+    restart: "no"
+    ports:
+      - '1025:1025'
+      - '8025:8025'
 volumes:
   sans_data:
     name: ${COMPOSE_PROJECT_NAME}_data

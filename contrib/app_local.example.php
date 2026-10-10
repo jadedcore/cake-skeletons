@@ -9,9 +9,9 @@ define('DB_DEFAULTS', [
 	'driver' => Mysql::class,
 	'persistent' => false,
 	'host' => env('MARIADB_HOST', 'mariadb'),
-	'port' => env('MARIADB_PORT'),
-	'username' => env('MARIADB_USER'),
-	'password' => env('MARIADB_PASSWORD'),
+	'port' => env('MARIADB_PORT', '3306'),
+	'username' => env('MARIADB_USER', 'app'),
+	'password' => env('MARIADB_PASSWORD', ''),
 	'encoding' => 'utf8mb4',
 	'timezone' => 'UTC',
 	'flags' => [],
@@ -22,7 +22,7 @@ define('DB_DEFAULTS', [
 
 define('DB_NAME', [
 	'default' => [
-		'name' => 'app'
+		'name' => env('MARIADB_DATABASE', 'app')
 	]
 ]);
 
