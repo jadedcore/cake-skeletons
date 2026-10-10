@@ -202,7 +202,7 @@ The skeleton is still evolving.
 
 Current areas for improvement include:
 
-* Provide a standard `app_local.php` configuration that consumes the Docker environment variables.
+* Provide a standard `app_local.php` configuration that consumes the Docker environment variables. ✅
 * Continue generalizing `toolkit` so that it contains only functionality appropriate for any generated CakePHP project.
 * Standardize project verification commands for PHPUnit and PHPCS.
 * Make installation of reusable standard plugins configurable.
